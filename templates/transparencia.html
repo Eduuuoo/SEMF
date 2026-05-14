@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+    <div class="card-form">
+        <h2 class="fw-bold mb-4" style="color: var(--primary);">PORTAL DA TRANSPARÊNCIA</h2>
+        <table class="table table-hover mt-4">
+            <thead style="background: var(--primary); color: white;">
+                <tr>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for gasto in gastos %}
+                <tr>
+                    <td>{{ gasto.data }}</td>
+                    <td>{{ gasto.descricao }}</td>
+                    <td class="text-danger fw-bold">- {{ gasto.valor }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

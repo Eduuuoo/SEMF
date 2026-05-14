@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5 text-center">
+    <div class="card-form mx-auto" style="max-width: 500px;">
+        <h2 class="fw-bold mb-4" style="color: var(--primary);">APOIE O MAIS FUTURO</h2>
+        <p>Sua ajuda garante uniformes e lanches para nossos atletas.</p>
+        <div class="bg-light p-4 my-4 border">
+            <h5 class="fw-bold">PIX (CNPJ)</h5>
+            <p class="h3">00.000.000/0001-00</p>
+        </div>
+        <a href="{{ url_for('home') }}" class="btn-semf">VOLTAR</a>
+    </div>
+</div>
+{% endblock %}

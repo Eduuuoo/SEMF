@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5 py-5 text-center">
+    <div class="card-form mx-auto" style="max-width: 600px;">
+        <h1 class="text-success fw-bold">ENVIADO COM SUCESSO!</h1>
+        <p class="lead mt-4">Olá, <strong>{{ nome }}</strong>!</p>
+        <p>Recebemos sua solicitação de matrícula. Entraremos em contato em breve.</p>
+        <a href="{{ url_for('home') }}" class="btn-semf mt-4">VOLTAR AO INÍCIO</a>
+    </div>
+</div>
+{% endblock %}
