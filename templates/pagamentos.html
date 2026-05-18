@@ -1,24 +1,54 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container my-5">
-    <div class="card-semf text-center">
-        <h2 class="fw-bold" style="color: var(--vermelho);">ÁREA FINANCEIRA</h2>
-        <p>Contribua com a associação ou pague mensalidades.</p>
-        <div class="row mt-5">
+    <div class="card-dark p-5 shadow-lg">
+        <h2 class="fw-bold mb-3" style="color: var(--turquesa);">ÁREA DE PAGAMENTOS INSTITUCIONAIS</h2>
+        <p class="text-muted">Gere sua mensalidade ou contribua com a SEMF sem sair do nosso portal.</p>
+        <hr class="border-secondary my-4">
+
+        <div class="row g-4">
             <div class="col-md-6">
-                <div class="p-4 bg-dark rounded border border-secondary mb-3">
-                    <h4 style="color: var(--turquesa);">PIX CNPJ</h4>
-                    <p class="h4">00.000.000/0001-00</p>
-                </div>
+                <h4 class="mb-3 text-white">Emitir Mensalidade / Taxa</h4>
+                <form action="#" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">CPF do Atleta ou Responsável</label>
+                        <input type="text" class="form-control" placeholder="000.000.000-00" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Selecione a Categoria</label>
+                        <select class="form-select">
+                            <option>Mensalidade Futebol de Campo (R$ 50,00)</option>
+                            <option>Mensalidade Futsal (R$ 50,00)</option>
+                            <option>Contribuição Voluntária / Doação</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn-semf w-100" onclick="simularPagamento()">GERAR COBRANÇA DIRETA</button>
+                </form>
             </div>
-            <div class="col-md-6">
-                <div class="p-4 bg-dark rounded border border-secondary">
-                    <h4 style="color: var(--laranja);">BOLETO</h4>
-                    <p>Emissão mensal automática.</p>
-                    <button class="btn btn-outline-light btn-sm">Solicitar Boleto</button>
+
+            <div class="col-md-6 border-start border-secondary ps-md-4">
+                <h4 class="mb-3 text-white">Sua Cobrança Atual</h4>
+                <div id="area-pagamento-ativa" class="p-4 bg-black rounded text-center border border-secondary">
+                    <p class="text-muted">Preencha os dados ao lado para gerar o PIX ou o Boleto nesta tela.</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+function simularPagamento() {
+    const area = document.getElementById('area-pagamento-ativa');
+    area.innerHTML = `
+        <h5 style="color: var(--laranja);" class="fw-bold">COBRANÇA GERADA WITH SUCESSO</h5>
+        <p class="small text-white my-3">Escaneie o QR Code abaixo ou utilize o código Copia e Cola:</p>
+        <div class="bg-white d-inline-block p-2 rounded mb-3">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=SEMF_Mais_Futuro_Pix_Simulado" alt="QR Code PIX">
+        </div>
+        <input type="text" class="form-control text-center bg-dark text-white mb-2" value="0002010102112630550014br.gov.bcb.pix..." readonly>
+        <button class="btn btn-sm btn-outline-light w-100 mb-2">Copiar Código PIX</button>
+        <button class="btn btn-sm btn-primary w-100">Imprimir Boleto Bancário (.PDF)</button>
+    `;
+}
+</script>
 {% endblock %}

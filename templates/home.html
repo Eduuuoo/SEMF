@@ -1,33 +1,95 @@
 {% extends "base.html" %}
 {% block content %}
+
 <section class="hero">
     <div class="container">
         <h1 class="display-2 fw-bold" style="color: var(--turquesa);">SEMF</h1>
-        <p class="lead fs-3">A força do esporte em Campo Novo de Rondônia.</p>
-        <a href="{{ url_for('inscricao') }}" class="btn-semf mt-4">Matricule-se Agora</a>
+        <p class="lead fs-3">O futuro do Futebol e Futsal em Campo Novo de Rondônia.</p>
+        <a href="{{ url_for('inscricao') }}" class="btn-semf mt-4">Fazer Inscrição Online</a>
     </div>
 </section>
 
 <div class="container my-5">
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card-semf text-center">
-                <h3 style="color: var(--laranja);">COMPETIÇÃO</h3>
-                <p>Levando o nome de Campo Novo para todo o estado.</p>
+    <div class="text-center mb-5">
+        <h2 class="fw-bold display-6" style="color: var(--laranja);">NOSSAS VERTENTES</h2>
+        <p class="text-muted">Trabalho focado na evolução técnica e cidadania dentro e fora das quadras e campos.</p>
+    </div>
+
+    <div class="row g-5 align-items-center">
+        <div class="col-md-6">
+            <div class="p-4 rounded-4 position-relative overflow-hidden shadow-lg mb-4" 
+                 style="background: linear-gradient(135deg, #121212, #1a1a1a); border-left: 6px solid var(--turquesa);">
+                <span class="badge text-bg-success position-absolute top-0 end-0 m-3 px-3 py-2">CAMPO</span>
+                <h3 class="fw-bold mt-2" style="color: var(--turquesa);">FUTEBOL DE BASE</h3>
+                <p class="text-muted mt-3">
+                    Treinamentos de rendimento no gramado, focando no posicionamento tático, 
+                    preparo físico e espírito de equipe. Preparando nossos atletas para torneios regionais.
+                </p>
+                <div class="d-flex align-items-center mt-4">
+                    <div style="width: 40px; height: 2px; background-color: var(--turquesa); margin-right: 10px;"></div>
+                    <span class="small fw-bold text-white-50">Categorias: Sub-11, Sub-13, Sub-15 e Sub-17</span>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card-semf text-center">
-                <h3 style="color: var(--roxo);">DISCIPLINA</h3>
-                <p>Formando cidadãos através dos valores do esporte.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card-semf text-center">
-                <h3 style="color: var(--turquesa);">FUTURO</h3>
-                <p>Oportunidades reais para nossos jovens atletas.</p>
+
+        <div class="col-md-6">
+            <div class="p-4 rounded-4 position-relative overflow-hidden shadow-lg mb-4" 
+                 style="background: linear-gradient(135deg, #121212, #1a1a1a); border-left: 6px solid var(--laranja);">
+                <span class="badge text-bg-warning position-absolute top-0 end-0 m-3 px-3 py-2 text-dark">QUADRA</span>
+                <h3 class="fw-bold mt-2" style="color: var(--laranja);">FUTSAL INSTITUCIONAL</h3>
+                <p class="text-muted mt-3">
+                    Agilidade, raciocínio rápido e muita técnica. O futsal desenvolve o controle de bola 
+                    em espaços reduzidos e a disciplina dinâmica indispensável para o crescimento do jogador.
+                </p>
+                <div class="d-flex align-items-center mt-4">
+                    <div style="width: 40px; height: 2px; background-color: var(--laranja); margin-right: 10px;"></div>
+                    <span class="small fw-bold text-white-50">Treinos semanais focados em técnica individual</span>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="container my-5 pt-4">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold display-5" style="color: var(--turquesa);">NOSSO PROJETO EM AÇÃO</h2>
+        <p class="text-muted">Veja os registros dos nossos treinos, campeonatos e a nossa evolução em Campo Novo.</p>
+        <div style="width: 80px; height: 4px; background-color: var(--laranja); margin: 0 auto; border-radius: 2px;"></div>
+    </div>
+
+    <div class="galeria-grid">
+        <div class="foto-item">
+            <img src="{{ url_for('static', filename='galeria/foto1.jpg') }}" alt="Treino da SEMF">
+            <div class="foto-legenda">
+                <h5>Treino das Categorias de Base</h5>
+                <p>Preparação intensa para o campeonato regional.</p>
+            </div>
+        </div>
+
+        <div class="foto-item">
+            <img src="{{ url_for('static', filename='galeria/foto2.jpg') }}" alt="Futsal em Ação">
+            <div class="foto-legenda">
+                <h5>Disputa de Futsal</h5>
+                <p>Nossos atletas demonstrando agilidade em quadra.</p>
+            </div>
+        </div>
+
+        <div class="foto-item">
+            <img src="{{ url_for('static', filename='galeria/foto3.jpg') }}" alt="História do Clube">
+            <div class="foto-legenda">
+                <h5>Entrega dos Novos Uniformes</h5>
+                <p>Orgulho e identidade com as cores da SEMF.</p>
+            </div>
+        </div>
+
+        <div class="foto-item">
+            <img src="{{ url_for('static', filename='galeria/foto4.jpg') }}" alt="Momento do Jogo">
+            <div class="foto-legenda">
+                <h5>Trabalho em Equipe</h5>
+                <p>União dentro e fora das quatro linhas.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

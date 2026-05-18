@@ -3,21 +3,18 @@ import csv
 import os
 
 app = Flask(__name__)
-app.secret_key = "semf_dark_edition_2026"
+app.secret_key = "semf_production_key_2026"
 
+# Lista do Portal da Transparência
 gastos_lista = [
-    {"data": "02/05/2026", "descricao": "Material Esportivo e Uniformes", "valor": "R$ 1.250,00"},
-    {"data": "10/05/2026", "descricao": "Manutenção do Campo Novo", "valor": "R$ 600,00"},
-    {"data": "14/05/2026", "descricao": "Arbitragem e Logística", "valor": "R$ 450,00"}
+    {"data": "02/05/2026", "descricao": "Material Esportivo e Coletes", "valor": "R$ 1.250,00"},
+    {"data": "10/05/2026", "descricao": "Manutenção da Sede / Campo", "valor": "R$ 600,00"},
+    {"data": "14/05/2026", "descricao": "Logística e Arbitragem", "valor": "R$ 450,00"}
 ]
 
 @app.route('/')
 def home():
     return render_template('home.html')
-
-@app.route('/sobre')
-def sobre():
-    return render_template('sobre.html')
 
 @app.route('/transparencia')
 def transparencia():
@@ -36,6 +33,7 @@ def inscricao():
         
         file_path = 'inscricoes_semf.csv'
         file_exists = os.path.isfile(file_path)
+        
         with open(file_path, 'a', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             if not file_exists:

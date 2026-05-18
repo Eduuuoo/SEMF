@@ -1,26 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container my-5">
-    <div class="card-semf">
-        <h2 class="fw-bold mb-4" style="color: var(--turquesa);">TRANSPARÊNCIA</h2>
-        <table class="table table-dark table-striped">
-            <thead>
-                <tr>
-                    <th>Data</th>
-                    <th>Descrição</th>
-                    <th>Valor</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for g in gastos %}
-                <tr>
-                    <td>{{ g.data }}</td>
-                    <td>{{ g.descricao }}</td>
-                    <td class="text-danger fw-bold">- {{ g.valor }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div class="card-dark shadow-lg">
+        <h2 class="fw-bold mb-4" style="color: var(--turquesa);">PORTAL DA TRANSPARÊNCIA</h2>
+        <p class="text-muted">Prestação de contas e lançamentos financeiros oficiais da associação.</p>
+        
+        <div class="table-responsive mt-4">
+            <table class="table table-striped table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th style="color: var(--laranja); font-weight: 700;">DATA</th>
+                        <th style="color: var(--laranja); font-weight: 700;">DESCRIÇÃO DO LANÇAMENTO</th>
+                        <th style="color: var(--laranja); font-weight: 700;">VALOR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for g in gastos %}
+                    <tr>
+                        <td>{{ g.data }}</td>
+                        <td>{{ g.descricao }}</td>
+                        <td class="text-danger fw-bold">- {{ g.valor }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 {% endblock %}

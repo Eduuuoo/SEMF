@@ -1,83 +1,229 @@
+/* ==========================================================================
+   1. VARIÁVEIS DE CORES E CONFIGURAÇÕES GERAIS (Paleta Dark SEMF)
+   ========================================================================== */
 :root {
-    --preto-profundo: #0a0a0a;
-    --preto-card: #161616;
-    --turquesa: #20b2aa;
-    --laranja: #ff8c00;
-    --roxo: #6a5acd;
-    --vermelho: #dc3545;
-    --texto-claro: #e0e0e0;
+    --preto-fundo: #050505;       
+    --preto-card: #121212;        
+    --turquesa: #20b2aa;          
+    --laranja: #ff8c00;           
+    --roxo: #6a5acd;              
+    --vermelho: #dc3545;          
+    --texto-branco: #ffffff;      
+    --texto-claro: #e0e0e0;       
+    --texto-mutado: #a0a0a0;      
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, sans-serif;
-    background-color: var(--preto-profundo);
-    color: var(--texto-claro);
+    background-color: var(--preto-fundo) !important;
+    color: var(--texto-claro) !important;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
+    padding: 0;
 }
 
-/* Navbar Dark */
+p, span, li {
+    color: var(--texto-claro);
+}
+
+.text-muted {
+    color: var(--texto-mutado) !important;
+}
+
+/* ==========================================================================
+   2. BARRA DE NAVEGAÇÃO (NAVBAR)
+   ========================================================================== */
 .navbar {
-    background-color: rgba(0, 0, 0, 0.95) !important;
-    border-bottom: 3px solid var(--turquesa);
-    padding: 0.8rem 0;
+    background-color: #000000 !important;
+    border-bottom: 2px solid var(--turquesa);
+    padding: 12px 0;
 }
 
-.logo-site {
-    height: 60px; /* Tamanho da sua logo */
+.logo-img { 
+    height: 50px; 
     width: auto;
-    margin-right: 15px;
-    border-radius: 5px;
+    margin-right: 15px; 
+    border-radius: 4px; 
 }
 
-.navbar-brand { font-weight: 800; color: white !important; font-size: 1.5rem; }
-.nav-link { color: #bbb !important; font-weight: 600; text-transform: uppercase; margin-left: 20px; font-size: 0.85rem; }
-.nav-link:hover { color: var(--laranja) !important; }
+.navbar-brand { 
+    font-weight: 800; 
+    color: var(--texto-branco) !important; 
+    letter-spacing: 0.5px;
+}
 
-/* Seção de Destaque */
+.nav-link { 
+    font-weight: 600; 
+    color: var(--texto-branco) !important; 
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover { 
+    color: var(--laranja) !important; 
+}
+
+/* ==========================================================================
+   3. BANNER PRINCIPAL (HERO)
+   ========================================================================== */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                url('https://images.unsplash.com/photo-1551952237-954a0e68786c?q=80');
+    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80');
     background-size: cover;
-    padding: 100px 0;
+    background-position: center;
+    padding: 120px 0;
     text-align: center;
-    border-bottom: 5px solid var(--roxo);
+    border-bottom: 5px solid var(--laranja);
 }
 
+.hero h1 {
+    color: var(--texto-branco) !important;
+}
+
+.hero p {
+    color: var(--texto-claro) !important;
+}
+
+/* ==========================================================================
+   4. CARDS, FORMULÁRIOS E TABELAS
+   ========================================================================== */
+.card-dark {
+    background-color: var(--preto-card) !important;
+    border: 1px solid #2a2a2a !important;
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.form-label {
+    color: var(--texto-branco) !important;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-control, .form-select { 
+    background-color: #1a1a1a !important; 
+    border: 1px solid #444 !important; 
+    color: var(--texto-branco) !important; 
+    border-radius: 6px;
+    padding: 10px 15px;
+}
+
+.form-control:focus, .form-select:focus { 
+    background-color: #222222 !important; 
+    color: var(--texto-branco) !important; 
+    border-color: var(--turquesa) !important; 
+    box-shadow: none !important; 
+}
+
+.form-control::placeholder {
+    color: #666666 !important;
+}
+
+.table {
+    color: var(--texto-branco) !important;
+    border-color: #333 !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: #161616 !important;
+    color: var(--texto-branco) !important;
+}
+
+/* ==========================================================================
+   5. BOTÕES PERSONALIZADOS (ESTILO SEMF)
+   ========================================================================== */
 .btn-semf {
-    background: linear-gradient(45deg, var(--laranja), var(--vermelho));
-    color: white;
-    padding: 14px 40px;
-    border-radius: 5px;
+    background: linear-gradient(to right, var(--laranja), var(--roxo));
+    color: var(--texto-branco) !important;
+    border: none;
+    padding: 12px 32px;
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
     display: inline-block;
-    transition: 0.3s;
-    border: none;
+    border-radius: 6px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
 }
 
-.btn-semf:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4); color: white; }
-
-/* Cards Dark */
-.card-semf {
-    background: var(--preto-card);
-    border: 1px solid #333;
-    border-radius: 10px;
-    padding: 30px;
-    margin-bottom: 20px;
+.btn-semf:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
+    color: var(--texto-branco) !important; 
 }
 
-.form-control {
-    background-color: #222;
-    border: 1px solid #444;
-    color: white;
+/* ==========================================================================
+   6. GALERIA DE FOTOS (O PROJETO EM AÇÃO)
+   ========================================================================== */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
 }
 
-.form-control:focus { background-color: #2a2a2a; color: white; border-color: var(--turquesa); }
+.foto-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid #222;
+    background-color: var(--preto-card);
+    transition: all 0.3s ease-in-out;
+}
 
-footer {
-    background: #000;
-    padding: 50px 0;
-    border-top: 2px solid #222;
-    text-align: center;
+.foto-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--turquesa);
+    box-shadow: 0 10px 20px rgba(32, 178, 170, 0.25);
+}
+
+.foto-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.foto-item:hover img {
+    transform: scale(1.06);
+}
+
+.foto-legenda {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
+    padding: 15px;
+}
+
+.foto-legenda h5 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--laranja);
+}
+
+.foto-legenda p {
+    margin: 5px 0 0 0;
+    font-size: 0.85rem;
+    color: #cccccc !important;
+}
+
+/* ==========================================================================
+   7. RODAPÉ (FOOTER)
+   ========================================================================== */
+footer { 
+    background-color: #000000 !important; 
+    padding: 45px 0; 
+    text-align: center; 
+    border-top: 1px solid #222; 
+    color: var(--texto-mutado) !important;
+}
+
+footer p {
+    color: var(--texto-mutado) !important;
+    margin-bottom: 5px;
 }
