@@ -1,14 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container my-5 text-center">
-    <div class="card-form mx-auto" style="max-width: 500px;">
-        <h2 class="fw-bold mb-4" style="color: var(--primary);">APOIE O MAIS FUTURO</h2>
-        <p>Sua ajuda garante uniformes e lanches para nossos atletas.</p>
-        <div class="bg-light p-4 my-4 border">
-            <h5 class="fw-bold">PIX (CNPJ)</h5>
-            <p class="h3">00.000.000/0001-00</p>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="card card-portal p-5">
+                <h2 class="text-center mb-4" style="color: var(--primary-blue);">Como ajudar a SEMF?</h2>
+                <p class="text-center text-muted">Sua doação garante uniformes, lanches e inscrições em torneios para nossos atletas.</p>
+                
+                <div class="bg-light p-4 rounded text-center my-4 border">
+                    <h5 class="mb-3">Doação via PIX</h5>
+                    <p class="h4 text-primary fw-bold">CNPJ: 00.000.000/0001-00</p>
+                    <p class="small text-muted">Favorecido: Associação Esportiva SEMF</p>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>Patrocinador Oficial:</strong> Se você é empresário e deseja estampar sua marca em nossos uniformes, entre em contato via WhatsApp.
+                </div>
+                
+                <div class="text-center">
+                    <a href="{{ url_for('home') }}" class="btn btn-outline-secondary mt-3">Voltar ao Início</a>
+                </div>
+            </div>
         </div>
-        <a href="{{ url_for('home') }}" class="btn-semf">VOLTAR</a>
     </div>
 </div>
 {% endblock %}

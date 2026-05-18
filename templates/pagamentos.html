@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+    <div class="card-semf text-center">
+        <h2 class="fw-bold" style="color: var(--vermelho);">ÁREA FINANCEIRA</h2>
+        <p>Contribua com a associação ou pague mensalidades.</p>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="p-4 bg-dark rounded border border-secondary mb-3">
+                    <h4 style="color: var(--turquesa);">PIX CNPJ</h4>
+                    <p class="h4">00.000.000/0001-00</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-4 bg-dark rounded border border-secondary">
+                    <h4 style="color: var(--laranja);">BOLETO</h4>
+                    <p>Emissão mensal automática.</p>
+                    <button class="btn btn-outline-light btn-sm">Solicitar Boleto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,19 +1,19 @@
 from flask import Flask, render_template, request, url_for
+import csv
+import os
 
 app = Flask(__name__)
+app.secret_key = "semf_dark_edition_2026"
 
-# Dados para a Transparência (Simulados)
 gastos_lista = [
-    {"data": "02/05/2026", "descricao": "Material Esportivo", "valor": "R$ 750,00"},
-    {"data": "10/05/2026", "descricao": "Manutenção Campo", "valor": "R$ 600,00"}
+    {"data": "02/05/2026", "descricao": "Material Esportivo e Uniformes", "valor": "R$ 1.250,00"},
+    {"data": "10/05/2026", "descricao": "Manutenção do Campo Novo", "valor": "R$ 600,00"},
+    {"data": "14/05/2026", "descricao": "Arbitragem e Logística", "valor": "R$ 450,00"}
 ]
 
 @app.route('/')
 def home():
-    try:
-        return render_template('home.html')
-    except Exception as e:
-        return f"Erro ao carregar a página inicial: {e}"
+    return render_template('home.html')
 
 @app.route('/sobre')
 def sobre():
@@ -23,17 +23,27 @@ def sobre():
 def transparencia():
     return render_template('transparencia.html', gastos=gastos_lista)
 
-@app.route('/doacao')
-def doacao():
-    return render_template('doacao.html')
+@app.route('/pagamentos')
+def pagamentos():
+    return render_template('pagamentos.html')
 
 @app.route('/inscricao', methods=['GET', 'POST'])
 def inscricao():
     if request.method == 'POST':
-        nome_atleta = request.form.get('nome')
-        return render_template('sucesso.html', nome=nome_atleta)
+        nome = request.form.get('nome')
+        cpf = request.form.get('cpf')
+        telefone = request.form.get('telefone')
+        
+        file_path = 'inscricoes_semf.csv'
+        file_exists = os.path.isfile(file_path)
+        with open(file_path, 'a', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f)
+            if not file_exists:
+                writer.writerow(['Nome Atleta', 'CPF', 'WhatsApp'])
+            writer.writerow([nome, cpf, telefone])
+            
+        return render_template('sucesso.html', nome=nome)
     return render_template('inscricao.html')
 
 if __name__ == '__main__':
-    # O debug=True ajuda a ver o erro real se o site cair
     app.run(debug=True)

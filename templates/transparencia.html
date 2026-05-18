@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container my-5">
-    <div class="card-form">
-        <h2 class="fw-bold mb-4" style="color: var(--primary);">PORTAL DA TRANSPARÊNCIA</h2>
-        <table class="table table-hover mt-4">
-            <thead style="background: var(--primary); color: white;">
+    <div class="card-semf">
+        <h2 class="fw-bold mb-4" style="color: var(--turquesa);">TRANSPARÊNCIA</h2>
+        <table class="table table-dark table-striped">
+            <thead>
                 <tr>
                     <th>Data</th>
                     <th>Descrição</th>
@@ -12,11 +12,11 @@
                 </tr>
             </thead>
             <tbody>
-                {% for gasto in gastos %}
+                {% for g in gastos %}
                 <tr>
-                    <td>{{ gasto.data }}</td>
-                    <td>{{ gasto.descricao }}</td>
-                    <td class="text-danger fw-bold">- {{ gasto.valor }}</td>
+                    <td>{{ g.data }}</td>
+                    <td>{{ g.descricao }}</td>
+                    <td class="text-danger fw-bold">- {{ g.valor }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
