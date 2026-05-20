@@ -2,15 +2,16 @@
    1. VARIÁVEIS DE CORES E CONFIGURAÇÕES GERAIS (Paleta Dark SEMF)
    ========================================================================== */
 :root {
-    --preto-fundo: #050505;       
-    --preto-card: #121212;        
-    --turquesa: #20b2aa;          
-    --laranja: #ff8c00;           
-    --roxo: #6a5acd;              
-    --vermelho: #dc3545;          
-    --texto-branco: #ffffff;      
-    --texto-claro: #e0e0e0;       
-    --texto-mutado: #a0a0a0;      
+    --preto-fundo:  #050505;
+    --preto-card:   #121212;
+    --turquesa:     #20b2aa;
+    --laranja:      #ff8c00;
+    --roxo:         #6a5acd;
+    --vermelho:     #dc3545;
+    --texto-branco: #ffffff;
+    --texto-claro:  #e0e0e0;
+    --texto-mutado: #a0a0a0;
+    --primary-blue: #20b2aa;
 }
 
 body {
@@ -35,39 +36,77 @@ p, span, li {
 .navbar {
     background-color: #000000 !important;
     border-bottom: 2px solid var(--turquesa);
-    padding: 12px 0;
+    padding: 10px 0;
 }
 
-.logo-img { 
-    height: 50px; 
-    width: auto;
-    margin-right: 15px; 
-    border-radius: 4px; 
+.logo-img {
+    max-height: 45px !important;
+    width: auto !important;
+    margin-right: 12px;
+    border-radius: 4px;
 }
 
-.navbar-brand { 
-    font-weight: 800; 
-    color: var(--texto-branco) !important; 
+.navbar-brand {
+    font-weight: 800;
+    color: var(--texto-branco) !important;
     letter-spacing: 0.5px;
+    font-size: 1rem;
 }
 
-.nav-link { 
-    font-weight: 600; 
-    color: var(--texto-branco) !important; 
+.nav-link {
+    font-weight: 600;
+    color: var(--texto-branco) !important;
     text-transform: uppercase;
     font-size: 0.9rem;
     transition: color 0.2s ease;
 }
 
-.nav-link:hover { 
-    color: var(--laranja) !important; 
+.nav-link:hover {
+    color: var(--laranja) !important;
+}
+
+.navbar-toggler {
+    border-color: var(--turquesa) !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2320b2aa' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: #0a0a0a;
+        padding: 16px;
+        border-top: 1px solid #222;
+        border-radius: 0 0 8px 8px;
+        text-align: center;
+    }
+
+    .navbar-brand span {
+        font-size: 0.85rem;
+    }
+
+    .nav-link {
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #1a1a1a;
+    }
+
+    .nav-link:last-of-type {
+        border-bottom: none;
+    }
+
+    .navbar-collapse .btn-semf {
+        display: block;
+        margin-top: 12px;
+        text-align: center;
+    }
 }
 
 /* ==========================================================================
    3. BANNER PRINCIPAL (HERO)
    ========================================================================== */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
                 url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80');
     background-size: cover;
     background-position: center;
@@ -87,10 +126,11 @@ p, span, li {
 /* ==========================================================================
    4. CARDS, FORMULÁRIOS E TABELAS
    ========================================================================== */
-.card-dark {
+.card-dark,
+.card-semf {
     background-color: var(--preto-card) !important;
     border: 1px solid #2a2a2a !important;
-    padding: 40px;
+    padding: clamp(20px, 5vw, 40px);
     border-radius: 12px;
     margin-bottom: 25px;
 }
@@ -101,23 +141,35 @@ p, span, li {
     margin-bottom: 8px;
 }
 
-.form-control, .form-select { 
-    background-color: #1a1a1a !important; 
-    border: 1px solid #444 !important; 
-    color: var(--texto-branco) !important; 
+.form-control,
+.form-select {
+    background-color: #1a1a1a !important;
+    border: 1px solid #444 !important;
+    color: var(--texto-branco) !important;
     border-radius: 6px;
     padding: 10px 15px;
 }
 
-.form-control:focus, .form-select:focus { 
-    background-color: #222222 !important; 
-    color: var(--texto-branco) !important; 
-    border-color: var(--turquesa) !important; 
-    box-shadow: none !important; 
+.form-control:focus,
+.form-select:focus {
+    background-color: #222222 !important;
+    color: var(--texto-branco) !important;
+    border-color: var(--turquesa) !important;
+    box-shadow: none !important;
 }
 
 .form-control::placeholder {
     color: #666666 !important;
+}
+
+.alert-form-erro {
+    background-color: rgba(220, 53, 69, 0.15);
+    border: 1px solid var(--vermelho);
+    color: #ff6b6b;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
 }
 
 .table {
@@ -147,14 +199,14 @@ p, span, li {
     cursor: pointer;
 }
 
-.btn-semf:hover { 
-    transform: translateY(-2px); 
+.btn-semf:hover {
+    transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
-    color: var(--texto-branco) !important; 
+    color: var(--texto-branco) !important;
 }
 
 /* ==========================================================================
-   6. GALERIA DE FOTOS (O PROJETO EM AÇÃO)
+   6. GALERIA DE FOTOS
    ========================================================================== */
 .galeria-grid {
     display: grid;
@@ -215,11 +267,11 @@ p, span, li {
 /* ==========================================================================
    7. RODAPÉ (FOOTER)
    ========================================================================== */
-footer { 
-    background-color: #000000 !important; 
-    padding: 45px 0; 
-    text-align: center; 
-    border-top: 1px solid #222; 
+footer {
+    background-color: #000000 !important;
+    padding: 45px 0;
+    text-align: center;
+    border-top: 1px solid #222;
     color: var(--texto-mutado) !important;
 }
 

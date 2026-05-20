@@ -3,4 +3,4 @@ services:
     name: semf-site
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:appgit add .
+    startCommand: gunicorn app:app

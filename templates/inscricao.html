@@ -3,20 +3,25 @@
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card-semf">
+            <div class="card-dark">
                 <h2 class="fw-bold mb-4" style="color: var(--laranja);">FICHA DE MATRÍCULA</h2>
+
+                {% if erro %}
+                <div class="alert-form-erro">⚠ {{ erro }}</div>
+                {% endif %}
+
                 <form action="{{ url_for('inscricao') }}" method="POST">
                     <div class="mb-3">
                         <label class="form-label">Nome do Atleta</label>
-                        <input type="text" name="nome" class="form-control" required>
+                        <input type="text" name="nome" class="form-control" placeholder="Nome completo" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">CPF</label>
-                        <input type="text" name="cpf" class="form-control" required>
+                        <input type="text" name="cpf" class="form-control" placeholder="000.000.000-00" required>
                     </div>
                     <div class="mb-4">
                         <label class="form-label">WhatsApp</label>
-                        <input type="text" name="telefone" class="form-control" required>
+                        <input type="tel" name="telefone" class="form-control" placeholder="(69) 9 0000-0000" required>
                     </div>
                     <button type="submit" class="btn-semf w-100">SALVAR MATRÍCULA</button>
                 </form>
