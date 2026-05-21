@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container my-5 text-center py-5">
-    <div class="card-semf d-inline-block p-5 border-success">
-        <h1 class="text-success">CONCLUÍDO!</h1>
-        <p class="lead mt-3">Matrícula de <strong>{{ nome }}</strong> salva com sucesso.</p>
-        <p class="text-muted small">Os dados estão no arquivo 'inscricoes_semf.csv'.</p>
-        <a href="{{ url_for('home') }}" class="btn-semf mt-4">VOLTAR</a>
+<div class="container my-5 py-5 text-center">
+    <div style="max-width:480px; margin:0 auto;" class="card-dark">
+        <div style="font-size:3.5rem; margin-bottom:16px;">✅</div>
+        <h2 class="fw-bold" style="color: var(--verde-ok);">MATRÍCULA CONFIRMADA!</h2>
+        <p class="lead mt-3">Atleta <strong style="color:var(--turquesa);">{{ nome }}</strong> registrado com sucesso.</p>
+        <p class="text-muted small">Os dados foram salvos no sistema da SEMF. Em breve entraremos em contato pelo WhatsApp informado.</p>
+        <a href="{{ url_for('home') }}" class="btn-semf mt-4" style="display:inline-block;">VOLTAR AO INÍCIO</a>
     </div>
 </div>
 {% endblock %}

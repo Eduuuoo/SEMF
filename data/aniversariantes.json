@@ -1,0 +1,12 @@
+[
+  {
+    "nome": "Carlos Silva",
+    "data_nasc": "1998-05-21",
+    "modalidade": "Futebol"
+  },
+  {
+    "nome": "Lucas Mendes",
+    "data_nasc": "2005-05-21",
+    "modalidade": "Futsal"
+  }
+]

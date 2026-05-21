@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin — SEMF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- Header Admin -->
+<div class="admin-header">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <h1>⚙ PAINEL ADMIN — SEMF</h1>
+        <div class="d-flex gap-2">
+            <a href="{{ url_for('home') }}" class="btn-admin">Ver Site</a>
+            <a href="{{ url_for('admin_logout') }}" class="btn-danger-sm" style="display:inline-flex; align-items:center; padding:7px 14px;">Sair</a>
+        </div>
+    </div>
+</div>
+
+<div class="container pb-5">
+
+    <!-- Cards de resumo -->
+    <div class="row g-3 mb-4">
+        <div class="col-6 col-md-3">
+            <div class="card-dark text-center py-3 px-2">
+                <div style="font-size:1.8rem; font-weight:800; font-family:'Barlow Condensed',sans-serif; color:var(--turquesa);">{{ atletas|length }}</div>
+                <small class="text-muted">Atletas</small>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card-dark text-center py-3 px-2">
+                <div style="font-size:1.8rem; font-weight:800; font-family:'Barlow Condensed',sans-serif; color:var(--laranja);">{{ gastos|length }}</div>
+                <small class="text-muted">Lançamentos</small>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card-dark text-center py-3 px-2">
+                <div style="font-size:1.8rem; font-weight:800; font-family:'Barlow Condensed',sans-serif; color:var(--roxo);">{{ aniversariantes|length }}</div>
+                <small class="text-muted">Aniversariantes cadastrados</small>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card-dark text-center py-3 px-2">
+                <div style="font-size:1.8rem; font-weight:800; font-family:'Barlow Condensed',sans-serif; color:var(--verde-ok);">✓</div>
+                <small class="text-muted">Sistema Online</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ATLETAS ===== -->
+    <div class="card-dark mb-4" id="atletas">
+        <h4 class="fw-bold mb-3" style="color:var(--turquesa);">📋 Atletas Matriculados</h4>
+        {% if atletas %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle" style="font-size:0.88rem;">
+                <thead>
+                    <tr>
+                        <th style="color:var(--laranja);">Nome</th>
+                        <th style="color:var(--laranja);">CPF</th>
+                        <th style="color:var(--laranja);">WhatsApp</th>
+                        <th style="color:var(--laranja);">Nasc.</th>
+                        <th style="color:var(--laranja);">Modalidade</th>
+                        <th style="color:var(--laranja);">Categoria</th>
+                        <th style="color:var(--laranja);">Responsável</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in atletas %}
+                    <tr>
+                        <td class="fw-bold">{{ a.nome }}</td>
+                        <td>{{ a.cpf }}</td>
+                        <td>{{ a.whatsapp }}</td>
+                        <td>{{ a.data_nasc }}</td>
+                        <td><span class="badge" style="background:var(--turquesa-dim); color:var(--turquesa); font-family:'Barlow Condensed',sans-serif;">{{ a.modalidade }}</span></td>
+                        <td>{{ a.categoria }}</td>
+                        <td>{{ a.responsavel or '—' }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-muted">Nenhum atleta matriculado ainda.</p>
+        {% endif %}
+    </div>
+
+    <!-- ===== GASTOS / TRANSPARÊNCIA ===== -->
+    <div class="card-dark mb-4" id="gastos">
+        <h4 class="fw-bold mb-1" style="color:var(--turquesa);">💰 Transparência — Lançamentos</h4>
+        <p class="text-muted small mb-3">Estes dados aparecem no Portal da Transparência público.</p>
+
+        <!-- Formulário adicionar gasto -->
+        <form action="{{ url_for('admin_add_gasto') }}" method="POST" class="row g-2 mb-4 align-items-end">
+            <div class="col-sm-3">
+                <label class="form-label">Data</label>
+                <input type="text" name="data" class="form-control" placeholder="DD/MM/AAAA" required>
+            </div>
+            <div class="col-sm-5">
+                <label class="form-label">Descrição</label>
+                <input type="text" name="descricao" class="form-control" placeholder="Ex: Material esportivo" required>
+            </div>
+            <div class="col-sm-2">
+                <label class="form-label">Valor</label>
+                <input type="text" name="valor" class="form-control" placeholder="R$ 0,00" required>
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn-admin w-100" style="padding:10px;">+ Adicionar</button>
+            </div>
+        </form>
+
+        <div class="table-responsive">
+            <table class="table table-striped align-middle" style="font-size:0.88rem;">
+                <thead>
+                    <tr>
+                        <th style="color:var(--laranja);">Data</th>
+                        <th style="color:var(--laranja);">Descrição</th>
+                        <th style="color:var(--laranja);">Valor</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for g in gastos %}
+                    <tr>
+                        <td>{{ g.data }}</td>
+                        <td>{{ g.descricao }}</td>
+                        <td style="color:#ff6b6b;">- {{ g.valor }}</td>
+                        <td>
+                            <form action="{{ url_for('admin_del_gasto', idx=loop.index0) }}" method="POST">
+                                <button type="submit" class="btn-danger-sm">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ===== ANIVERSARIANTES ===== -->
+    <div class="card-dark" id="aniversariantes">
+        <h4 class="fw-bold mb-1" style="color:var(--turquesa);">🎂 Aniversariantes</h4>
+        <p class="text-muted small mb-3">Atletas cadastrados aqui aparecem no banner da home no dia do aniversário.</p>
+
+        <!-- Formulário adicionar aniversariante -->
+        <form action="{{ url_for('admin_add_aniv') }}" method="POST" class="row g-2 mb-4 align-items-end">
+            <div class="col-sm-4">
+                <label class="form-label">Nome do Atleta</label>
+                <input type="text" name="nome" class="form-control" placeholder="Nome completo" required>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">Data de Nascimento</label>
+                <input type="date" name="data_nasc" class="form-control" required>
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">Modalidade</label>
+                <select name="modalidade" class="form-select">
+                    <option>Futebol de Campo</option>
+                    <option>Futsal</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn-admin w-100" style="padding:10px;">+ Adicionar</button>
+            </div>
+        </form>
+
+        <div class="table-responsive">
+            <table class="table table-striped align-middle" style="font-size:0.88rem;">
+                <thead>
+                    <tr>
+                        <th style="color:var(--laranja);">Nome</th>
+                        <th style="color:var(--laranja);">Nascimento</th>
+                        <th style="color:var(--laranja);">Modalidade</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in aniversariantes %}
+                    <tr>
+                        <td class="fw-bold">{{ a.nome }}</td>
+                        <td>{{ a.data_nasc }}</td>
+                        <td>{{ a.modalidade }}</td>
+                        <td>
+                            <form action="{{ url_for('admin_del_aniv', idx=loop.index0) }}" method="POST">
+                                <button type="submit" class="btn-danger-sm">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

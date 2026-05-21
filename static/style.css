@@ -1,41 +1,32 @@
-/* ==========================================================================
-   SEMF — Paleta Dark + Toque Profissional
-   Fonte: Barlow Condensed (display) + Barlow (corpo) — esportiva, forte, limpa
-   ========================================================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap');
 
 /* ==========================================================================
    1. VARIÁVEIS
    ========================================================================== */
 :root {
-    --preto-fundo:  #050505;
-    --preto-card:   #111111;
-    --preto-nav:    #000000;
-    --turquesa:     #20b2aa;
-    --turquesa-dim: rgba(32, 178, 170, 0.12);
-    --laranja:      #ff8c00;
-    --laranja-dim:  rgba(255, 140, 0, 0.12);
-    --roxo:         #6a5acd;
-    --vermelho:     #dc3545;
-    --texto-branco: #ffffff;
-    --texto-claro:  #dde1e7;
-    --texto-mutado: #7a8390;
-    --primary-blue: #20b2aa;
-    --borda-sutil:  #1e1e1e;
-    --radius:       10px;
+    --preto-fundo:   #050505;
+    --preto-card:    #111111;
+    --preto-nav:     #000000;
+    --turquesa:      #20b2aa;
+    --turquesa-dim:  rgba(32,178,170,0.10);
+    --laranja:       #ff8c00;
+    --laranja-dim:   rgba(255,140,0,0.10);
+    --roxo:          #6a5acd;
+    --vermelho:      #dc3545;
+    --verde-ok:      #28a745;
+    --texto-branco:  #ffffff;
+    --texto-claro:   #dde1e7;
+    --texto-mutado:  #7a8390;
+    --primary-blue:  #20b2aa;
+    --borda-sutil:   #1e1e1e;
+    --radius:        10px;
 }
 
 /* ==========================================================================
    2. RESET E BASE
    ========================================================================== */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
     background-color: var(--preto-fundo) !important;
@@ -43,29 +34,23 @@ body {
     font-family: 'Barlow', 'Segoe UI', sans-serif;
     font-size: 1rem;
     line-height: 1.65;
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
     -webkit-font-smoothing: antialiased;
 }
 
-p, span, li {
-    color: var(--texto-claro);
-}
-
-.text-muted {
-    color: var(--texto-mutado) !important;
-}
+p, span, li { color: var(--texto-claro); }
+.text-muted  { color: var(--texto-mutado) !important; }
+h1,h2,h3,h4,h5,h6 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; }
 
 /* ==========================================================================
-   3. NAVBAR — 100% responsiva, nunca estoura no mobile
+   3. NAVBAR
    ========================================================================== */
 .navbar {
     background-color: var(--preto-nav) !important;
     border-bottom: 2px solid var(--turquesa);
     padding: 0;
     min-height: 62px;
-    /* Linha de brilho sutil no topo */
-    box-shadow: 0 1px 0 rgba(32,178,170,0.15), 0 4px 24px rgba(0,0,0,0.7);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.7);
     position: sticky;
     top: 0;
     z-index: 1030;
@@ -77,7 +62,6 @@ p, span, li {
     align-items: center;
 }
 
-/* --- Logo --- */
 .logo-img {
     max-height: 40px !important;
     width: auto !important;
@@ -86,7 +70,6 @@ p, span, li {
     flex-shrink: 0;
 }
 
-/* --- Brand (logo + nome) --- */
 .navbar-brand {
     display: flex;
     align-items: center;
@@ -98,15 +81,11 @@ p, span, li {
     letter-spacing: 0.8px;
     text-transform: uppercase;
     line-height: 1.2;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: calc(100vw - 80px); /* garante espaço pro hamburguer */
+    max-width: calc(100vw - 80px);
     padding: 10px 0;
     text-decoration: none;
 }
 
-/* --- Links do menu --- */
 .nav-link {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
@@ -122,23 +101,15 @@ p, span, li {
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
     background-color: var(--turquesa);
     transition: width 0.25s ease;
 }
 
-.nav-link:hover {
-    color: var(--turquesa) !important;
-}
+.nav-link:hover { color: var(--turquesa) !important; }
+.nav-link:hover::after { width: 100%; }
 
-.nav-link:hover::after {
-    width: 100%;
-}
-
-/* --- Botão hamburguer --- */
 .navbar-toggler {
     border: 1.5px solid var(--turquesa) !important;
     border-radius: 6px;
@@ -155,69 +126,26 @@ p, span, li {
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2320b2aa' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
-    width: 22px;
-    height: 22px;
+    width: 22px; height: 22px;
 }
 
-/* --- Menu colapsado no mobile --- */
 .navbar-collapse {
     background-color: #080808;
     border-top: 1px solid #1a1a1a;
 }
 
-/* Desktop: sem fundo extra */
 @media (min-width: 992px) {
-    .navbar-collapse {
-        background-color: transparent;
-        border-top: none;
-    }
-
-    .navbar-nav {
-        gap: 28px;
-        align-items: center;
-    }
+    .navbar-collapse { background-color: transparent; border-top: none; }
+    .navbar-nav { gap: 28px; align-items: center; }
 }
 
-/* Mobile: menu bem espaçado e centralizado */
 @media (max-width: 991px) {
-    .navbar-collapse {
-        padding: 12px 20px 18px;
-        border-radius: 0 0 10px 10px;
-    }
-
-    .navbar-nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-        width: 100%;
-    }
-
-    .nav-link {
-        font-size: 1rem;
-        padding: 10px 16px !important;
-        width: 100%;
-        text-align: center;
-        border-radius: 6px;
-        transition: background 0.2s, color 0.2s;
-    }
-
-    .nav-link:hover {
-        background-color: var(--turquesa-dim);
-    }
-
-    .nav-link::after {
-        display: none;
-    }
-
-    /* Botão MATRÍCULA no mobile: full-width e bem espaçado */
-    .navbar-nav .btn-semf {
-        display: block;
-        width: 100%;
-        text-align: center;
-        margin-top: 10px;
-        padding: 12px 20px;
-        font-size: 0.95rem;
-    }
+    .navbar-collapse { padding: 12px 20px 18px; border-radius: 0 0 10px 10px; }
+    .navbar-nav { flex-direction: column; align-items: center; gap: 4px; width: 100%; }
+    .nav-link { font-size: 1rem; padding: 10px 16px !important; width: 100%; text-align: center; border-radius: 6px; }
+    .nav-link:hover { background-color: var(--turquesa-dim); }
+    .nav-link::after { display: none; }
+    .navbar-nav .btn-semf { display: block; width: 100%; text-align: center; margin-top: 10px; padding: 12px 20px; font-size: 0.95rem; }
 }
 
 /* ==========================================================================
@@ -235,11 +163,9 @@ p, span, li {
     overflow: hidden;
 }
 
-/* Brilho sutil no fundo do hero */
 .hero::before {
     content: '';
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background: radial-gradient(ellipse at 50% 100%, rgba(32,178,170,0.07) 0%, transparent 70%);
     pointer-events: none;
 }
@@ -252,26 +178,71 @@ p, span, li {
     text-shadow: 0 0 40px rgba(32,178,170,0.4);
 }
 
-.hero p {
-    color: var(--texto-claro) !important;
-}
+.hero p { color: var(--texto-claro) !important; }
 
 /* ==========================================================================
    5. CARDS
    ========================================================================== */
-.card-dark,
-.card-semf {
+.card-dark, .card-semf {
     background-color: var(--preto-card) !important;
     border: 1px solid var(--borda-sutil) !important;
     padding: clamp(22px, 5vw, 42px);
     border-radius: var(--radius);
     margin-bottom: 25px;
-    /* Brilho de borda sutil */
     box-shadow: 0 0 0 1px rgba(255,255,255,0.03), 0 8px 32px rgba(0,0,0,0.4);
 }
 
 /* ==========================================================================
-   6. FORMULÁRIOS
+   6. CARD DE ANIVERSARIANTE
+   ========================================================================== */
+.card-aniversario {
+    background: linear-gradient(135deg, #111 0%, #1a1200 100%);
+    border: 1px solid var(--laranja) !important;
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 20px rgba(255,140,0,0.12);
+    animation: pulseAniv 3s ease-in-out infinite;
+}
+
+@keyframes pulseAniv {
+    0%, 100% { box-shadow: 0 4px 20px rgba(255,140,0,0.12); }
+    50%       { box-shadow: 0 4px 28px rgba(255,140,0,0.28); }
+}
+
+.card-aniversario .emoji-cake {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.card-aniversario h6 {
+    color: var(--laranja);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 2px;
+    letter-spacing: 0.5px;
+}
+
+.card-aniversario small {
+    color: var(--texto-mutado);
+    font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   7. SEÇÃO "SOBRE NÓS" na home
+   ========================================================================== */
+.sobre-nos-section {
+    background: linear-gradient(135deg, #0a0a0a 0%, #0d1a19 100%);
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 70px 0;
+}
+
+/* ==========================================================================
+   8. FORMULÁRIOS
    ========================================================================== */
 .form-label {
     font-family: 'Barlow Condensed', sans-serif;
@@ -283,8 +254,7 @@ p, span, li {
     margin-bottom: 6px;
 }
 
-.form-control,
-.form-select {
+.form-control, .form-select {
     background-color: #161616 !important;
     border: 1px solid #333 !important;
     color: var(--texto-branco) !important;
@@ -294,21 +264,18 @@ p, span, li {
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.form-control:focus,
-.form-select:focus {
+.form-control:focus, .form-select:focus {
     background-color: #1c1c1c !important;
     color: var(--texto-branco) !important;
     border-color: var(--turquesa) !important;
     box-shadow: 0 0 0 3px rgba(32,178,170,0.18) !important;
 }
 
-.form-control::placeholder {
-    color: #4a4a4a !important;
-}
+.form-control::placeholder { color: #4a4a4a !important; }
 
 .alert-form-erro {
-    background-color: rgba(220, 53, 69, 0.1);
-    border: 1px solid rgba(220, 53, 69, 0.4);
+    background-color: rgba(220,53,69,0.1);
+    border: 1px solid rgba(220,53,69,0.4);
     color: #ff8080;
     padding: 10px 14px;
     border-radius: 7px;
@@ -316,8 +283,21 @@ p, span, li {
     font-size: 0.88rem;
 }
 
+/* Separador de seção no form */
+.form-section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--turquesa);
+    border-bottom: 1px solid #1e1e1e;
+    padding-bottom: 6px;
+    margin: 24px 0 14px;
+}
+
 /* ==========================================================================
-   7. TABELAS
+   9. TABELAS
    ========================================================================== */
 .table {
     color: var(--texto-claro) !important;
@@ -334,8 +314,16 @@ p, span, li {
     background-color: var(--turquesa-dim) !important;
 }
 
+.table thead th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #222 !important;
+}
+
 /* ==========================================================================
-   8. BOTÃO SEMF
+   10. BOTÃO SEMF
    ========================================================================== */
 .btn-semf {
     background: linear-gradient(110deg, var(--laranja) 0%, #c85fd8 100%);
@@ -356,29 +344,57 @@ p, span, li {
     overflow: hidden;
 }
 
-/* Brilho interno no hover */
-.btn-semf::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0);
-    transition: background 0.2s;
-    border-radius: inherit;
-}
-
 .btn-semf:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 140, 0, 0.35);
+    box-shadow: 0 6px 20px rgba(255,140,0,0.35);
     filter: brightness(1.08);
     color: var(--texto-branco) !important;
 }
 
-.btn-semf:hover::before {
-    background: rgba(255,255,255,0.06);
+/* Botão admin (outline turquesa) */
+.btn-admin {
+    background: transparent;
+    border: 1.5px solid var(--turquesa);
+    color: var(--turquesa) !important;
+    padding: 7px 18px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+}
+
+.btn-admin:hover {
+    background: var(--turquesa);
+    color: #000 !important;
+}
+
+.btn-danger-sm {
+    background: transparent;
+    border: 1px solid rgba(220,53,69,0.4);
+    color: #ff6b6b !important;
+    padding: 4px 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-danger-sm:hover {
+    background: rgba(220,53,69,0.15);
 }
 
 /* ==========================================================================
-   9. GALERIA
+   11. GALERIA
    ========================================================================== */
 .galeria-grid {
     display: grid;
@@ -399,26 +415,20 @@ p, span, li {
 .foto-item:hover {
     transform: translateY(-5px);
     border-color: var(--turquesa);
-    box-shadow: 0 12px 28px rgba(32, 178, 170, 0.2);
+    box-shadow: 0 12px 28px rgba(32,178,170,0.2);
 }
 
 .foto-item img {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    display: block;
+    width: 100%; height: 240px;
+    object-fit: cover; display: block;
     transition: transform 0.45s ease;
 }
 
-.foto-item:hover img {
-    transform: scale(1.07);
-}
+.foto-item:hover img { transform: scale(1.07); }
 
 .foto-legenda {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0; left: 0; right: 0;
     background: linear-gradient(transparent, rgba(0,0,0,0.93));
     padding: 20px 14px 14px;
 }
@@ -426,8 +436,7 @@ p, span, li {
 .foto-legenda h5 {
     margin: 0;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 700;
+    font-size: 1.05rem; font-weight: 700;
     letter-spacing: 0.4px;
     color: var(--laranja);
 }
@@ -439,31 +448,56 @@ p, span, li {
 }
 
 /* ==========================================================================
-   10. SEÇÃO DE DESTAQUE (linha decorativa de título)
+   12. ADMIN — painel
    ========================================================================== */
-.titulo-secao {
-    position: relative;
-    display: inline-block;
-    padding-bottom: 10px;
+.admin-header {
+    background: #000;
+    border-bottom: 2px solid var(--turquesa);
+    padding: 14px 0;
+    margin-bottom: 32px;
 }
 
-.titulo-secao::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 48px;
-    height: 3px;
-    background: linear-gradient(to right, var(--turquesa), var(--laranja));
-    border-radius: 2px;
+.admin-header h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem;
+    color: var(--turquesa);
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.admin-tab {
+    border-bottom: 2px solid #1e1e1e;
+    margin-bottom: 28px;
+}
+
+.admin-tab .tab-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    background: transparent;
+    border: none;
+    color: var(--texto-mutado);
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.admin-tab .tab-btn.active,
+.admin-tab .tab-btn:hover {
+    color: var(--turquesa);
+    border-bottom-color: var(--turquesa);
 }
 
 /* ==========================================================================
-   11. FOOTER
+   13. FOOTER
    ========================================================================== */
 footer {
-    background-color: #000000 !important;
+    background-color: #000 !important;
     padding: 40px 0 30px;
     text-align: center;
     border-top: 1px solid #161616;
@@ -473,12 +507,8 @@ footer {
 
 footer::before {
     content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 1px;
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 120px; height: 1px;
     background: linear-gradient(to right, transparent, var(--turquesa), transparent);
 }
 
@@ -490,32 +520,14 @@ footer p {
 }
 
 /* ==========================================================================
-   12. UTILITÁRIOS RESPONSIVE EXTRAS
+   14. RESPONSIVO MOBILE FINAL
    ========================================================================== */
 @media (max-width: 575px) {
-    .hero {
-        padding: 55px 0;
-    }
-
-    .hero h1 {
-        font-size: clamp(3rem, 16vw, 5rem) !important;
-    }
-
-    .hero p {
-        font-size: 1.05rem !important;
-    }
-
-    .galeria-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .card-dark,
-    .card-semf {
-        border-radius: 8px;
-    }
-
-    /* Tabela: scroll horizontal em telas pequenas (já está com table-responsive) */
-    .table {
-        font-size: 0.88rem;
-    }
+    .hero { padding: 55px 0; }
+    .hero h1 { font-size: clamp(3rem, 16vw, 5rem) !important; }
+    .hero p  { font-size: 1.05rem !important; }
+    .galeria-grid { grid-template-columns: 1fr; }
+    .card-dark, .card-semf { border-radius: 8px; }
+    .table { font-size: 0.88rem; }
+    .sobre-nos-section { padding: 45px 0; }
 }

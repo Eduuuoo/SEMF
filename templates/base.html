@@ -12,56 +12,42 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='logo.jpg') }}" class="logo-img" alt="Logo SEMF">
+            <span>SEMF MAIS FUTURO</span>
+        </a>
 
-            <!-- Logo + Nome da Associação -->
-            <a class="navbar-brand" href="{{ url_for('home') }}">
-                <img src="{{ url_for('static', filename='logo.jpg') }}"
-                     class="logo-img"
-                     alt="Logo SEMF">
-                <span>SEMF MAIS FUTURO</span>
-            </a>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu"
+                aria-controls="navbarMenu"
+                aria-expanded="false"
+                aria-label="Abrir menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <!-- Botão hamburguer (aparece só no mobile) -->
-            <button class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarMenu"
-                    aria-controls="navbarMenu"
-                    aria-expanded="false"
-                    aria-label="Abrir menu de navegação">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Links (colapsam no mobile) -->
-            <div class="collapse navbar-collapse" id="navbarMenu">
-                <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('home') }}">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('transparencia') }}">Transparência</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('pagamentos') }}">Pagamentos</a>
-                    </li>
-                    <li class="nav-item ms-lg-3">
-                        <a class="btn-semf" href="{{ url_for('inscricao') }}">MATRÍCULA</a>
-                    </li>
-                </ul>
-            </div>
-
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('transparencia') }}">Transparência</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('pagamentos') }}">Pagamentos</a></li>
+                <li class="nav-item ms-lg-3">
+                    <a class="btn-semf" href="{{ url_for('inscricao') }}">MATRÍCULA</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    {% block content %}{% endblock %}
+{% block content %}{% endblock %}
 
-    <footer>
-        <p>© 2026 Associação Esportiva Mais Futuro</p>
-        <p>Campo Novo de Rondônia — RO</p>
-    </footer>
+<footer>
+    <p>© 2026 Associação Esportiva Mais Futuro</p>
+    <p>Campo Novo de Rondônia — RO</p>
+</footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

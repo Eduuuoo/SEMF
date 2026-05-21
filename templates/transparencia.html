@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container my-5">
-    <div class="card-dark shadow-lg">
-        <h2 class="fw-bold mb-4" style="color: var(--turquesa);">PORTAL DA TRANSPARÊNCIA</h2>
-        <p class="text-muted">Prestação de contas e lançamentos financeiros oficiais da associação.</p>
+    <div class="card-dark">
+        <p style="font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; letter-spacing:2px; text-transform:uppercase; color:var(--turquesa); margin-bottom:6px;">Prestação de Contas</p>
+        <h2 class="fw-bold mb-2" style="color: var(--texto-branco);">PORTAL DA TRANSPARÊNCIA</h2>
+        <p class="text-muted mb-4">Lançamentos financeiros oficiais da Associação Esportiva Mais Futuro.</p>
 
-        <div class="table-responsive mt-4">
+        <div class="table-responsive">
             <table class="table table-striped table-hover align-middle">
                 <thead>
                     <tr>
-                        <th style="color: var(--laranja); font-weight: 700;">DATA</th>
-                        <th style="color: var(--laranja); font-weight: 700;">DESCRIÇÃO DO LANÇAMENTO</th>
-                        <th style="color: var(--laranja); font-weight: 700;">VALOR</th>
+                        <th style="color: var(--laranja);">Data</th>
+                        <th style="color: var(--laranja);">Descrição</th>
+                        <th style="color: var(--laranja);">Valor</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,7 +20,7 @@
                     <tr>
                         <td>{{ g.data }}</td>
                         <td>{{ g.descricao }}</td>
-                        <td class="text-danger fw-bold">- {{ g.valor }}</td>
+                        <td style="color:#ff6b6b; font-weight:600;">- {{ g.valor }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

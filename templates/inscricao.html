@@ -2,8 +2,9 @@
 {% block content %}
 <div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-lg-7 col-md-9">
             <div class="card-dark">
+                <p style="font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; letter-spacing:2px; text-transform:uppercase; color:var(--turquesa); margin-bottom:6px;">Associação Esportiva SEMF</p>
                 <h2 class="fw-bold mb-4" style="color: var(--laranja);">FICHA DE MATRÍCULA</h2>
 
                 {% if erro %}
@@ -11,19 +12,66 @@
                 {% endif %}
 
                 <form action="{{ url_for('inscricao') }}" method="POST">
+
+                    <div class="form-section-title">Dados do Atleta</div>
                     <div class="mb-3">
-                        <label class="form-label">Nome do Atleta</label>
-                        <input type="text" name="nome" class="form-control" placeholder="Nome completo" required>
+                        <label class="form-label">Nome Completo *</label>
+                        <input type="text" name="nome" class="form-control" placeholder="Nome completo do atleta" required>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">CPF *</label>
+                            <input type="text" name="cpf" class="form-control" placeholder="000.000.000-00" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Data de Nascimento *</label>
+                            <input type="date" name="data_nasc" class="form-control" required>
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">CPF</label>
-                        <input type="text" name="cpf" class="form-control" placeholder="000.000.000-00" required>
+                        <label class="form-label">WhatsApp *</label>
+                        <input type="tel" name="whatsapp" class="form-control" placeholder="(69) 9 0000-0000" required>
                     </div>
-                    <div class="mb-4">
-                        <label class="form-label">WhatsApp</label>
-                        <input type="tel" name="telefone" class="form-control" placeholder="(69) 9 0000-0000" required>
+
+                    <div class="form-section-title">Endereço</div>
+                    <div class="mb-3">
+                        <label class="form-label">Endereço Completo</label>
+                        <input type="text" name="endereco" class="form-control" placeholder="Rua, número, bairro">
                     </div>
-                    <button type="submit" class="btn-semf w-100">SALVAR MATRÍCULA</button>
+
+                    <div class="form-section-title">Responsável (para menores de 18 anos)</div>
+                    <div class="mb-3">
+                        <label class="form-label">Nome do Responsável</label>
+                        <input type="text" name="responsavel" class="form-control" placeholder="Nome completo do responsável">
+                    </div>
+
+                    <div class="form-section-title">Modalidade e Categoria</div>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label">Modalidade *</label>
+                            <select name="modalidade" class="form-select" required>
+                                <option value="" disabled selected>Selecione...</option>
+                                <option value="Futebol de Campo">Futebol de Campo</option>
+                                <option value="Futsal">Futsal</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Categoria *</label>
+                            <select name="categoria" class="form-select" required>
+                                <option value="" disabled selected>Selecione...</option>
+                                <option value="Sub-11">Sub-11</option>
+                                <option value="Sub-13">Sub-13</option>
+                                <option value="Sub-15">Sub-15</option>
+                                <option value="Sub-17">Sub-17</option>
+                                <option value="Adulto">Adulto</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-semf w-100" style="font-size:1rem; padding:14px;">
+                        CONFIRMAR MATRÍCULA
+                    </button>
+                    <p class="text-center text-muted mt-3" style="font-size:0.8rem;">* Campos obrigatórios</p>
                 </form>
             </div>
         </div>
